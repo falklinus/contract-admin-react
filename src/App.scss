@@ -1,0 +1,387 @@
+.App {
+	background-color: #f0f0f0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #262626;
+
+	.login,
+	.home {
+		width: 50%;
+		min-width: 700px;
+	}
+
+	.login {
+		border-radius: 2rem;
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1.5rem;
+			margin: 0 auto;
+			max-width: 300px;
+
+			.input {
+				position: relative;
+				width: 100%;
+				margin-top: 1rem;
+
+				.placeholder {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					font-size: 1.5rem;
+					text-transform: uppercase;
+					transition: all 0.3s ease;
+					pointer-events: none;
+					color: #262626;
+					letter-spacing: 0.125rem;
+
+					&.active {
+						// color: #8c67ad;
+						top: 0;
+						transform: translate(-50%, -100%);
+						font-size: 1rem;
+						letter-spacing: 0rem;
+					}
+
+					&.invalid {
+						color: #e52e46;
+					}
+				}
+
+				input {
+					text-align: center;
+					width: 100%;
+					font-size: 1.25rem;
+					background-color: transparent;
+					outline: none;
+					border: none;
+					color: #262626;
+					padding: 0.5rem 0.25rem;
+					transition: all 0.3s ease;
+
+					&:focus {
+						border-bottom: 1px solid #262626;
+						&.invalid {
+							border-bottom-color: #e52e46;
+						}
+					}
+				}
+			}
+
+			button {
+				padding: 1rem 3rem;
+				color: #262626;
+				font-size: 1.5rem;
+				text-transform: uppercase;
+				letter-spacing: 0.125rem;
+				border: none;
+				border-radius: 3rem;
+				transition: all 0.3s ease 0s;
+				cursor: pointer;
+				outline: none;
+
+				&:hover,
+				&:focus {
+					background-color: #262626;
+					box-shadow: 0px 1rem 1.25rem #2626266c;
+					color: #fff;
+					transform: translateY(-7px);
+				}
+			}
+		}
+	}
+
+	.home {
+		text-transform: uppercase;
+		letter-spacing: 0.02rem;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 2rem 0;
+		overflow-y: auto;
+
+		.contractEvent {
+			width: 100%;
+			margin: 0 auto;
+
+			.title {
+				font-size: 1.5rem;
+				margin-bottom: 1rem;
+			}
+
+			.eventData {
+				width: 100%;
+				display: flex;
+				align-items: flex-start;
+				gap: 2rem;
+				margin-bottom: 1rem;
+				font-size: 1rem;
+
+				> div {
+					flex: 1;
+					max-width: 30%;
+					display: flex;
+					flex-direction: column;
+					gap: 2rem;
+
+					button,
+					input,
+					> div {
+						text-transform: uppercase;
+						width: 100%;
+						height: 3.5rem;
+						text-align: center;
+
+						.error {
+							text-transform: none;
+							text-align: left;
+							margin-left: 1rem;
+							font-size: 0.75rem;
+							color: #e52e46;
+						}
+					}
+
+					button,
+					input {
+						font-size: 1rem;
+						border: none;
+						border-radius: 0.5rem;
+						padding: 0 1rem;
+						color: #262626;
+						background-color: white;
+					}
+
+					button {
+						cursor: pointer;
+						transition: all 0.2s ease;
+
+						&:hover {
+							box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+						}
+
+						&.active {
+							background-color: #262626;
+							color: white;
+							&:active {
+								background-color: white;
+								color: #262626;
+							}
+						}
+
+						&:not(.active) {
+							&:active {
+								background-color: #262626;
+								color: white;
+							}
+						}
+
+						&.bounce {
+							transform: translateY(-1rem);
+							background-color: #262626;
+							color: white;
+						}
+					}
+
+					input {
+						text-transform: none;
+						outline: none;
+						&.hidden {
+							cursor: text;
+							color: transparent;
+						}
+					}
+
+					div {
+						position: relative;
+						.label {
+							position: absolute;
+							pointer-events: none;
+							left: 50%;
+							top: 50%;
+							transform: translate(-50%, -50%);
+							transition: all 0.2s ease;
+
+							&.active {
+								font-size: 0.75rem;
+								top: 0;
+								left: 0.5rem;
+								transform: translate(0, 0);
+							}
+						}
+
+						.searchResultsWrapper {
+							::-webkit-scrollbar-thumb {
+								&:active {
+									background-color: #262626 !important;
+								}
+							}
+
+							&::after {
+								content: '';
+								position: absolute;
+								bottom: 100%;
+								left: 1rem;
+								z-index: 0;
+								width: 0;
+								height: 0;
+								border-left: 1rem solid transparent;
+								border-right: 1rem solid transparent;
+								border-bottom: 1rem solid white;
+							}
+
+							z-index: 1;
+							position: absolute;
+							background: white;
+							top: calc(100% + 1rem);
+							box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+							border-radius: 0.5rem;
+							width: 150%;
+
+							.searchResults {
+								list-style: none;
+								overflow-y: auto;
+								display: flex;
+								flex-direction: column;
+								height: 100%;
+								max-height: 10rem;
+
+								li {
+									cursor: pointer;
+									padding: 0.5rem 1rem;
+									display: flex;
+									align-items: center;
+
+									> p {
+										flex: 1;
+									}
+
+									&:hover {
+										background-color: #f0f0f0;
+									}
+
+									&:first-child {
+										pointer-events: none;
+										border-top-left-radius: 0.5rem;
+										border-top-right-radius: 0.5rem;
+									}
+									&:last-child {
+										border-bottom-left-radius: 0.5rem;
+										border-bottom-right-radius: 0.5rem;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.contracts {
+			width: 100%;
+			margin: 0 auto;
+			justify-self: flex-start;
+			overflow-y: scroll;
+
+			.header {
+				position: sticky;
+				top: 0;
+				width: 100%;
+				background: #f0f0f0;
+				.title {
+					font-size: 1.5rem;
+					margin-bottom: 1rem;
+				}
+				.headings {
+					display: flex;
+					padding: 0 1rem;
+					border-bottom: 1px solid grey;
+					gap: 2rem;
+					overflow: hidden;
+					> p {
+						position: relative;
+						// font-weight: 500;
+						letter-spacing: 0.05rem;
+						text-align: center;
+						flex: 1;
+						cursor: pointer;
+						border-radius: 1rem;
+						padding: 0.5rem 0;
+						margin-bottom: 0.5rem;
+						transition: all 0.2s ease;
+						&:hover {
+							background-color: #262626;
+							color: white;
+
+							&::after {
+								content: attr(data-sort);
+								position: absolute;
+								right: 0.5rem;
+								top: 50%;
+								transform: translateY(-50%);
+							}
+						}
+					}
+				}
+			}
+
+			.contractList {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				.contractItem {
+					width: 100%;
+					display: flex;
+					gap: 2rem;
+					padding: 0.5rem 1rem;
+					> p {
+						text-align: center;
+						text-transform: lowercase;
+						flex: 1;
+					}
+				}
+			}
+		}
+
+		.pageButtons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin: 0 auto;
+			gap: 0.5rem;
+			background-color: white;
+			padding: 0.75rem;
+			border-radius: 0.5rem;
+
+			button {
+				cursor: pointer;
+				display: flex;
+				width: 2rem;
+				height: 2rem;
+				align-items: center;
+				justify-content: center;
+				background-color: transparent;
+				border: none;
+				outline: none;
+				font-size: 1rem;
+				border-radius: 0.25rem;
+				font-weight: 600;
+				transition: all 0.2s ease;
+
+				&.active {
+					background-color: #262626;
+					color: white;
+				}
+
+				&:hover:not(.active) {
+					opacity: 0.5;
+				}
+			}
+		}
+	}
+}
