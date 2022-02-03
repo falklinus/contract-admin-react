@@ -65,6 +65,7 @@ const Login = () => {
 						}}
 						onBlur={() => setUsernameActive(false)}
 						spellCheck='false'
+						autoComplete='off'
 						type='text'
 					/>
 				</div>
@@ -91,6 +92,7 @@ const Login = () => {
 							setPasswordError(false)
 						}}
 						onBlur={() => setPasswordActive(false)}
+						autoComplete='off'
 						type='password'
 					/>
 				</div>
