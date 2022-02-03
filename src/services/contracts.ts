@@ -12,6 +12,6 @@ export const fetchOpenContracts = async (id: string) => {
 
 export const dispatchContractEvent = async (event: any) => {
 	const [isValid, error] = isValidContractEvent(event)
-	if (!isValid) throw { response: { data: { error } } }
+	if (!isValid) throw JSON.stringify(error)
 	return (await Api().post('/event', event)).data
 }

@@ -64,7 +64,7 @@ const ContractEvent = ({ update }: { update: () => void }) => {
 		} catch (err: any) {
 			if (err?.response?.data?.error) {
 				setErrors({ ...err?.response?.data?.error })
-			}
+			} else setErrors(JSON.parse(err))
 		}
 	}
 

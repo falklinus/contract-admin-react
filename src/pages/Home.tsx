@@ -23,7 +23,12 @@ const Home = () => {
 	}
 
 	useEffect(() => {
-		update()
+		fetchContracts({ page, limit: 10, sort })
+			.then(res => {
+				setContracts(res.data)
+				setTotalPages(res.paging.total)
+			})
+			.catch(err => console.error(err))
 	}, [page, sort])
 	return (
 		<div className='home'>
