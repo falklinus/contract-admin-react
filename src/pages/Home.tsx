@@ -24,7 +24,7 @@ const Home = () => {
 
 	useEffect(() => {
 		update()
-	}, [page, sort, update])
+	}, [page, sort])
 	return (
 		<div className='home'>
 			<ContractEvent update={update} />
