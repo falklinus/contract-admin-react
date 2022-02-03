@@ -1,10 +1,8 @@
 import { Event, ErrorMsg } from '../interfaces'
 
 export const isValidContractEvent = (event: Event) => {
-	console.log(event)
 	let errorMsg: ErrorMsg = {}
 	const { contractId, name, premium, startDate, terminationDate } = event
-	console.log('hej', premium)
 	// contractId
 	if (!contractId) errorMsg.contractId = 'Required'
 
@@ -13,10 +11,8 @@ export const isValidContractEvent = (event: Event) => {
 		errorMsg.name = 'Not a valid event name'
 
 	// ContractCreatedEvent
-	console.log(name)
 	if (name === 'ContractCreatedEvent') {
 		// premium
-		console.log(premium)
 		if (premium === 0) {
 		} else if (premium && premium < 0) errorMsg.premium = 'Not valid'
 		else if (!premium) errorMsg.premium = 'Required'
