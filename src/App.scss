@@ -256,6 +256,7 @@
 									padding: 0.5rem 1rem;
 									display: flex;
 									align-items: center;
+									text-transform: none;
 
 									> p {
 										flex: 1;
@@ -266,6 +267,7 @@
 									}
 
 									&:first-child {
+										text-transform: uppercase;
 										pointer-events: none;
 										border-top-left-radius: 0.5rem;
 										border-top-right-radius: 0.5rem;
